@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Accounts">
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                name="printFormat"
+                label="Select Print Format"
+                value={selectedFormat}
+                placeholder="Select Format"
+                options={formatOptions}
+                onchange={handleFormatChange}>
+            </lightning-combobox>
+ 
+            <lightning-button label={buttonLabel} onclick={handlePrint} class="slds-m-top_small"></lightning-button>
+            
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Account Name">Account Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Industry">Industry</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Rating">Rating</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={accounts} for:item="account">
+                        <tr key={account.Id}>
+                            <td>
+                                <div class="slds-truncate" title={account.Name}>
+                                    <lightning-input type="text" variant="standard" value={account.Name} ></lightning-input>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={account.Industry}>{account.Industry}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={account.Rating}>{account.Rating}</div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+</template>
